@@ -1,4 +1,4 @@
-package com.example.jpastudy;
+package com.example.jpastudy.domain;
 
 
 import org.springframework.stereotype.Repository;

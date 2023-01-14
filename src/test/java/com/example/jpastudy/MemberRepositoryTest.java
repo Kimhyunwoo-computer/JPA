@@ -1,5 +1,7 @@
 package com.example.jpastudy;
 
+import com.example.jpastudy.domain.Member;
+import com.example.jpastudy.domain.MemberRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
