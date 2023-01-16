@@ -1,6 +1,7 @@
 package com.example.jpastudy.domain.item;
 
 import com.example.jpastudy.domain.Category;
+import com.example.jpastudy.exception.NotEnoughStockException;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,5 +30,21 @@ public abstract class Item {
 
     //==비지니스 로직==/
 
+    /**
+     * stack 증가
+     */
+    public void addStock(int quantity) {
+        this.stackQuantity += quantity;
+    }
 
+    /**
+     * stack 감소
+     */
+    public void removeStock(int quantity) {
+        int restStock = this.stackQuantity - quantity;
+        if(restStock < 0){
+            throw new NotEnoughStockException("need more stock");
+        }
+        this.stackQuantity = restStock;
+    }
 }
