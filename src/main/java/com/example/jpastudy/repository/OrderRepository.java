@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 
 @Repository
 @RequiredArgsConstructor
-public class orderRepository {
+public class OrderRepository {
 
     private final EntityManager em;
 
