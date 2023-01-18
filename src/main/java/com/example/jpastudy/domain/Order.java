@@ -1,7 +1,9 @@
 package com.example.jpastudy.domain;
 
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -14,6 +16,7 @@ import static javax.persistence.FetchType.*;
 @Entity
 @Table(name = "orders")
 @Getter @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order  {
 
     @Id @GeneratedValue
@@ -29,6 +32,7 @@ public class Order  {
 
     @OneToMany(mappedBy = "order" , cascade = CascadeType.ALL)
     //cascade 모든 Entity 는 저장하려고 할때 persist 를 따로 해줘야한다. 그런 일을 없애기 위해 cascade 사용
+    //Order 가 persisit 될때 cascade 사용되어있을 경우 OrderItem 에 모두 persist 해준다 .
     private List<OrderItem> orderItems = new ArrayList<>();
 
     @OneToOne(fetch = LAZY , cascade = CascadeType.ALL)
