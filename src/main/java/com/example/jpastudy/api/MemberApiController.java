@@ -31,7 +31,13 @@ public class MemberApiController {
         return new CreateMemberResponse(id);
     }
 
+    @PutMapping("/api/v2/members/{id}")
+    public UpdateMemberResponse updateMemberV2(@PathVariable("id") Long id , @RequestBody @Valid UpdataMemberRequest request){
 
+        memberService.update(id , request.getName());
+        Member findMember = memberService.findOne(id);
+        return new UpdateMemberResponse(findMember.getId() , findMember.getName());
+    }
 
     @Data
     static class UpdataMemberRequest{
